@@ -14,7 +14,7 @@ namespace CardGame
 
         public Players(string[] Names)
         {
-            foreach(string Name in Names)
+            foreach (string Name in Names)
             {
                 this.ListOfPlayers.Add(new Player(Name));
             }
@@ -25,14 +25,14 @@ namespace CardGame
 
         public void ChangeActivePlayer(string Who = null)
         {
-            
-            if(Who != null)
+
+            if (Who != null)
             {
                 this.ActivePlayer = this.ListOfPlayers[this.ListOfPlayers.FindIndex(P => P.Name == Who)];
                 return;
             }
 
-            if(this.ListOfPlayers.IndexOf(this.ActivePlayer) >= this.ListOfPlayers.Count - 1)
+            if (this.ListOfPlayers.IndexOf(this.ActivePlayer) >= this.ListOfPlayers.Count - 1)
             {
                 this.ActivePlayer = this.ListOfPlayers[0];
                 return;
@@ -40,7 +40,7 @@ namespace CardGame
             }
 
             this.ActivePlayer = this.ListOfPlayers[this.ListOfPlayers.IndexOf(this.ActivePlayer) + 1];
-            
+
         }
     }
 }

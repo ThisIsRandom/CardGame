@@ -9,17 +9,17 @@ namespace CardGame
         public Deck Deck;
         public Score Score;
         public Players Players;
-        
+
         public HigherLower()
         {
-        
+
             this.Deck = new Deck();
             this.Score = new Score();
             this.Players = this._CreatePlayers();
 
             //Mangler mulighed for at quitte
 
-            while(true)
+            while (true)
             {
                 this._PlayRound();
             }
@@ -28,7 +28,7 @@ namespace CardGame
 
         private void _PlayRound()
         {
-            if(this.Score.getScore() % 4 == 0 && this.Score.getScore() >= 4)
+            if (this.Score.getScore() % 4 == 0 && this.Score.getScore() >= 4)
             {
                 this._PassTurn();
             }
@@ -36,7 +36,7 @@ namespace CardGame
             Player Player = this._GetActivePlayer();
 
             Card NewCard = this.Deck.DrawCard();
-            
+
             Card PreviousCard = this.Deck.GetPreviousCard();
 
             Console.WriteLine(PreviousCard.Type + " " + PreviousCard.getSymbolicValue());
@@ -50,7 +50,7 @@ namespace CardGame
             Console.Clear();
 
         }
-        
+
         private Players _CreatePlayers()
         {
             Console.WriteLine("Hvor mange spillere? ");
@@ -60,7 +60,7 @@ namespace CardGame
                 int input = Convert.ToInt32(Console.ReadLine());
                 string[] Names = new string[input];
 
-                for(int i = 0; i < input; i++)
+                for (int i = 0; i < input; i++)
                 {
                     Console.WriteLine($"Navn på Spiller {i + 1} :");
                     Names[i] = Console.ReadLine();
@@ -77,7 +77,7 @@ namespace CardGame
             }
         }
 
-       
+
         private void _EvalCards(Card PrevCard, Card NewCard, Player CurPlayer)
         {
             Console.WriteLine("Højere eller Lavere?  [ H / L]");
@@ -90,7 +90,7 @@ namespace CardGame
             {
                 Console.WriteLine("Korrekt");
                 this.Score.Add();
-                return; 
+                return;
             }
 
             Console.WriteLine("Forkert");
